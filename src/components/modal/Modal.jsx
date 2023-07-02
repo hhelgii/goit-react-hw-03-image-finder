@@ -26,16 +26,13 @@ export class Modal extends React.Component {
     return (
       <div className={css.overlay} onClick={this.handleOverlayClick}>
         <div className={css.modal}>
-          <img src={pic.large} alt={pic.tags} />
+          <img src={pic} alt='' className={css.modalImage}/>
         </div>
       </div>
     );
   }
 }
 Modal.propTypes = {
-  pic: propTypes.shape({
-    tags: propTypes.string.isRequired,
-    large: propTypes.string.isRequired,
-  }).isRequired,
+  pic: propTypes.string.isRequired,
   onCloseModal: propTypes.func.isRequired,
 };

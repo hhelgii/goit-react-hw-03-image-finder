@@ -25,24 +25,25 @@ export class App extends React.Component {
     this.setState({ modal: { isOpen: false, picture: null } });
   };
 
-  openModal = img => {
-    this.setState({ modal: { isOpen: true, picture: img } });
+  openModal = pic => {
+    this.setState({ modal: { isOpen: true, picture: pic} });
+    
   };
 
-  async componentDidMount() {
-    try {
-      this.setState({ isLoading: true });
+  // async componentDidMount() {
+  //   try {
+  //     this.setState({ isLoading: true });
      
-      const pictures = await fetchPictures(this.state.query);
-      this.setState({ pictures });
-    } catch (error) {
-      this.setState({
-        error: error.message,
-      });
-    } finally {
-      this.setState({ isLoading: false });
-    }
-  }
+  //     const pictures = await fetchPictures(this.state.query);
+  //     this.setState({ pictures });
+  //   } catch (error) {
+  //     this.setState({
+  //       error: error.message,
+  //     });
+  //   } finally {
+  //     this.setState({ isLoading: false });
+  //   }
+  // }
   async componentDidUpdate(prevProp,prevState) {
     if (prevState.query !== this.state.query) {
       try {
@@ -63,17 +64,7 @@ export class App extends React.Component {
       <>
         <Searchbar onSubmit={this.onSubmit}></Searchbar>
         <div className={css.App}>
-          {this.state.isLoading&&
-          <ThreeDots 
-          height="80" 
-          width="80" 
-          radius="9"
-          color="#4fa94d" 
-          ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          wrapperClassName=""
-          visible={true}
-           />}
+         
           {this.state.pictures.length > 0 && (
             <ImageGallery
               pictures={this.state.pictures}
@@ -87,7 +78,19 @@ export class App extends React.Component {
               onCloseModal={this.onCloseModal}
             ></Modal>
           )}
-          <Button text="Load More"></Button>
+           {this.state.isLoading&&
+          <ThreeDots 
+          height="80" 
+          width="80" 
+          radius="9"
+          color="blue" 
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{}}
+          wrapperClassName=""
+          visible={true}
+           />}
+           {this.state.pictures.length > 0 &&( <Button text="Load More"></Button>)}
+         
         </div>
         
       </>

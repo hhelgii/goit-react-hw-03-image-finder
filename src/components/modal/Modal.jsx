@@ -22,18 +22,18 @@ export class Modal extends React.Component {
     window.removeEventListener('keydown', this.handleKeyDown);
   }
   render() {
-    const { img } = this.props;
+    const { pic } = this.props;
     return (
       <div className={css.overlay} onClick={this.handleOverlayClick}>
         <div className={css.modal}>
-          <img src={img.large} alt={img.tags} />
+          <img src={pic.large} alt={pic.tags} />
         </div>
       </div>
     );
   }
 }
 Modal.propTypes = {
-  img: propTypes.shape({
+  pic: propTypes.shape({
     tags: propTypes.string.isRequired,
     large: propTypes.string.isRequired,
   }).isRequired,

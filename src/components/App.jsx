@@ -83,12 +83,12 @@ export class App extends React.Component {
 
           {this.state.modal.isOpen && (
             <Modal
-              img={this.state.modal.img}
+              pic={this.state.modal.picture}
               onCloseModal={this.onCloseModal}
             ></Modal>
           )}
-        </div>
           <Button text="Load More"></Button>
+        </div>
         
       </>
     );

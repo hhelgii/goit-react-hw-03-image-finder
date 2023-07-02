@@ -43,8 +43,8 @@ export class App extends React.Component {
       this.setState({ isLoading: false });
     }
   }
-  async componentDidUpdate(prevstate) {
-    if (prevstate.query !== this.state.query) {
+  async componentDidUpdate(prevState) {
+    if (prevState.query !== this.state.query) {
       try {
         this.setState({ isLoading: true });
         const pictures = await fetchPictures(this.state.query);

@@ -17,7 +17,7 @@ export class App extends React.Component {
 
   onSubmit = async event => {
     event.preventDefault();
-    const query = event.target.value.trim();
+    const query = event.target.elements.query.value.trim();
     this.setState({ query });
   };
 
@@ -43,7 +43,7 @@ export class App extends React.Component {
       this.setState({ isLoading: false });
     }
   }
-  async componentDidUpdate(prevState) {
+  async componentDidUpdate(prevProp,prevState) {
     if (prevState.query !== this.state.query) {
       try {
         this.setState({ isLoading: true });
@@ -88,7 +88,8 @@ export class App extends React.Component {
             ></Modal>
           )}
         </div>
-        <Button text="Load More"></Button>
+          <Button text="Load More"></Button>
+        
       </>
     );
   }

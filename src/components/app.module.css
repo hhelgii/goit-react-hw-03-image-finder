@@ -1,7 +1,24 @@
-.App {
+/* .App {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 16px;
   padding-bottom: 24px;
   
+} */
+.App {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+  padding-bottom: 24px;
+  justify-items: center; /* Центрування по горизонталі */
+  align-items: center; /* Центрування по вертикалі */
+}
+
+.App h3 {
+  text-align: center; /* Центрування тексту */
+}
+
+Loader, Button {
+  width: fit-content; /* Залежна ширина від змісту */
+  margin: 0 auto; /* Центрування кнопки */
 }

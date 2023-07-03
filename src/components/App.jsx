@@ -40,21 +40,7 @@ export class App extends React.Component {
   scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  // NO NEEEED
-  // async componentDidMount() {
-  //   try {
-  //     this.setState({ isLoading: true });
-
-  //     const pictures = await fetchPictures(this.state.query);
-  //     this.setState({ pictures });
-  //   } catch (error) {
-  //     this.setState({
-  //       error: error.message,
-  //     });
-  //   } finally {
-  //     this.setState({ isLoading: false });
-  //   }
-  // }
+  
 
   // async componentDidUpdate(prevProp,prevState) {
   //   if (prevState.query !== this.state.query||prevState.page!==this.state.page) {
@@ -137,21 +123,21 @@ export class App extends React.Component {
               onCloseModal={this.onCloseModal}
             ></Modal>
           )}
-          {this.state.isLoading && (
-            <Loader></Loader>
-          )}
+          {this.state.isLoading && <Loader></Loader>}
 
-          {this.state.pictures.length > 0 &&
-            !this.state.allPicturesLoaded &&(
-              <Button text="Load More" onButtonClick={this.onLoadMore} />
-            )}
-          {this.state.allPicturesLoaded && (
-           <>
-              <h3>Oops! All pictures are loaded</h3>
-              <Button text="Scroll to top" onButtonClick={this.scrollToTop}></Button>
-           </>
+          {this.state.pictures.length > 0 && !this.state.allPicturesLoaded && (
+            <Button text="Load More" onButtonClick={this.onLoadMore} />
           )}
-          {this.state.error&&(<h3>Oops! Something went wrong</h3>)}
+          {this.state.allPicturesLoaded && (
+            <>
+              <h3>Oops! All pictures are loaded</h3>
+              <Button
+                text="Scroll to top"
+                onButtonClick={this.scrollToTop}
+              ></Button>
+            </>
+          )}
+          {this.state.error && <h3>Oops! Something went wrong</h3>}
         </div>
       </>
     );
